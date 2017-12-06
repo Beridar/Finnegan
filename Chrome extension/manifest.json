@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+
+  "name": "Roll20 Chat Listener",
+  "short_name": "Roll20ChatListener",
+  "description": "Listens for chat messages on Roll20 and does some magic with them.",
+  "version": "0.01",
+  "background": {
+    "scripts": ["determineIfBrowsingRoll20.js"],
+    "persistent": false
+  },
+  "page_action": {
+    "default_title": "roll20_chat"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://app.roll20.net/editor/"],
+      "js": [
+        "jquery-3.2.1.slim.min.js",
+        "listenToRoll20Chat.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "" // Site to post requests against goes here
+  ]
+}
