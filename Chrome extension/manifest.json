@@ -23,7 +23,6 @@
     }
   ],
   "permissions": [
-    "activeTab",
-    "" // Site to post requests against goes here
+    "activeTab"
   ]
 }
