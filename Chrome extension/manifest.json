@@ -16,7 +16,7 @@
     {
       "matches": ["https://app.roll20.net/editor/"],
       "js": [
-        "jquery-3.2.1.slim.min.js",
+        "jquery-3.2.1.min.js",
         "listenToRoll20Chat.js"
       ],
       "run_at": "document_end"

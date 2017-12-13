@@ -22,8 +22,19 @@ function ChatListener() {
     });*/
 				
 				var messageFrom = chatMessage.find(chatMessageFromClass).text() || "";
+				console.dir(messageFrom);
 				if (messageFrom.includes("API helper")) {
-					console.log(chatMessage.html());
+					console.dir(chatMessage.html());
+					$.ajax({
+						url: 'https://localhost:44392/api/values/1',
+						type: 'PUT',
+						data: {
+							value: chatMessage.html()
+						},
+						success: function() {
+							console.dir('posted to api successfully');
+						}
+					});
 				}
             });
         });
