@@ -13,24 +13,13 @@ function ChatListener() {
                     return;
                 }
 
-/*    var messages = $(".message");
-    messages.each(function () {
-    	console.dir(this);
-    	var text = this
-        	.children()
-        	.filter(function () { return this.nodeType == 3; })
-            [0].nodeValue;
-        console.dir(text);
-    });*/
 				var messageFrom = chatMessage.find(chatMessageFromClass).text() || "";
 
 				if (foundTheWelcomeMessage == false) {
 					if (messageFrom.includes("Welcome to Roll20!"))
 						foundTheWelcomeMessage = true;
 				} else {
-					console.dir(messageFrom);
 					if (messageFrom.includes("API helper")) {
-						console.dir(chatMessage.html());
 						$.ajax({
 							url: 'https://localhost:44392/api/values/1',
 							type: 'PUT',
@@ -38,7 +27,6 @@ function ChatListener() {
 								value: chatMessage.html()
 							},
 							success: function() {
-								console.dir('posted to api successfully');
 							}
 						});
 					}
