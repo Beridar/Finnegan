@@ -28,7 +28,7 @@ namespace Hermes
                 app.UseDeveloperExceptionPage();
 
             app.UseCors(builder => builder
-                .WithOrigins("chrome-extension://hdaedobpmkflaoelmeomaapfmokenhmp")
+                .WithOrigins("chrome-extension://pnmmibfhfjjhgjdpknnnkpmhldhcnmob")
                 .AllowAnyMethod());
 
             app.UseMvc();
