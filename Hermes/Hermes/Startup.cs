@@ -28,7 +28,7 @@ namespace Hermes
                 app.UseDeveloperExceptionPage();
 
             app.UseCors(builder => builder
-                .WithOrigins("https://app.roll20.net")
+                .WithOrigins("chrome-extension://hdaedobpmkflaoelmeomaapfmokenhmp")
                 .AllowAnyMethod());
 
             app.UseMvc();
