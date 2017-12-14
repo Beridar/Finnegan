@@ -16,7 +16,7 @@ function ChatListener() {
 				var messageFrom = chatMessage.find(chatMessageFromClass).text() || "";
 
 				if (foundTheWelcomeMessage == false) {
-					if (messageFrom.includes("Welcome to Roll20!"))
+					if (chatMessage.text().includes("Welcome to Roll20!"))
 						foundTheWelcomeMessage = true;
 				} else {
 					if (messageFrom.includes("API helper")) {
