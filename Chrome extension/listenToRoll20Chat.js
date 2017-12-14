@@ -2,6 +2,7 @@ chatUIClass = ".textchatcontainer";
 chatMessageHistoryContainer = ".content";
 chatMessageClass = ".message";
 chatMessageFromClass = ".by";
+foundTheWelcomeMessage = false;
 
 function ChatListener() {
     return new MutationObserver(function (mutations) {
@@ -11,6 +12,7 @@ function ChatListener() {
                 if (!chatMessage.is(chatMessageClass)) {
                     return;
                 }
+
 /*    var messages = $(".message");
     messages.each(function () {
     	console.dir(this);
@@ -20,21 +22,26 @@ function ChatListener() {
             [0].nodeValue;
         console.dir(text);
     });*/
-				
 				var messageFrom = chatMessage.find(chatMessageFromClass).text() || "";
-				console.dir(messageFrom);
-				if (messageFrom.includes("API helper")) {
-					console.dir(chatMessage.html());
-					$.ajax({
-						url: 'https://localhost:44392/api/values/1',
-						type: 'PUT',
-						data: {
-							value: chatMessage.html()
-						},
-						success: function() {
-							console.dir('posted to api successfully');
-						}
-					});
+
+				if (foundTheWelcomeMessage == false) {
+					if (messageFrom.includes("Welcome to Roll20!"))
+						foundTheWelcomeMessage = true;
+				} else {
+					console.dir(messageFrom);
+					if (messageFrom.includes("API helper")) {
+						console.dir(chatMessage.html());
+						$.ajax({
+							url: 'https://localhost:44392/api/values/1',
+							type: 'PUT',
+							data: {
+								value: chatMessage.html()
+							},
+							success: function() {
+								console.dir('posted to api successfully');
+							}
+						});
+					}
 				}
             });
         });
